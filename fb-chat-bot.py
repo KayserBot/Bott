@@ -611,11 +611,6 @@ class ChatBot(Client):
             except:
                 pass
 
-    def onUserRemoved(self, mid=None, author_id=None, new_color=None, thread_id=None, thread_type=ThreadType.USER, **kwargs):
-        reply = "ayan tar*ntado ka kasi, remove ka tuloy haha"
-        self.send(Message(text=reply), thread_id=thread_id,
-                  thread_type=thread_type)
-
     def onColorChange(self, mid=None, author_id=None, new_color=None, thread_id=None, thread_type=ThreadType.USER, **kwargs):
         reply = "pangjejemon lang theme, alisin mo na yan"
         self.send(Message(text=reply), thread_id=thread_id,
