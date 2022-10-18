@@ -532,7 +532,7 @@ class ChatBot(Client):
             elif ("hello" in msg):
                 reply = "hello, iloveyou mwa"
                 sendMsg()
-            elif ("hello" in msg or "hlo" in msg or "helloo" in msg):
+            elif ("hello" in msg or "hlo" in msg):
                 reply = "hi, inamo teh"
                 sendMsg()
             elif (msg == "hi"):
