@@ -468,15 +468,15 @@ class ChatBot(Client):
             elif("mute conversation" in msg):
                 try:
                     self.muteThread(mute_time=-1, thread_id=author_id)
-                    reply = "muted 🔕"
+                    reply = "muted"
                     sendQuery()
                 except:
                     pass
             elif ("busy" in msg):
-                reply = "Nobody is busy. Only things are prioritized."
+                reply = "wala wala, ako nga busy pero nakakapag multi task ako"
                 sendMsg()
             elif("help" in msg):
-                reply = "Sure! What should I do?"
+                reply = "bat naman kita tutulungan"
                 sendMsg()
             elif("clever" in msg):
                 reply = "Yes, i am clever. hope you will be clever soon."
@@ -490,53 +490,53 @@ class ChatBot(Client):
             elif ("marry me" in msg):
                 reply = "Yes, if you are nice and kind girl. But if you are boy RIP."
                 sendMsg()
-            elif ("you from" in msg):
-                reply = "I am from Nepal. Currently living in Kathmandu"
+            elif ("taga saan ka?" in msg):
+                reply = "sa poso mo, [padlock susi] {username} [susi padlock]"
                 sendMsg()
             elif ("you sure" in msg):
-                reply = "Yes. I'm sure."
+                reply = "yes. i'm sure."
                 sendMsg()
             elif ("great" in msg):
-                reply = "Thanks!"
+                reply = "salamat"
                 sendMsg()
             elif ("no problem" in msg):
-                reply = "Okay😊🙂"
+                reply = "okay"
                 sendMsg()
             elif ("thank you" in msg):
-                reply = "You're welcome😊🙂"
+                reply = "wala yon"
                 sendMsg()
             elif ("thanks" in msg):
-                reply = "You're welcome🙂"
+                reply = "wala yon"
                 sendMsg()
             elif ("well done" in msg):
-                reply = "Thanks🙂"
+                reply = "salamat"
                 sendMsg()
             elif ("wow" in msg):
-                reply = "🙂😊"
+                reply = "wow"
                 sendMsg()
             elif ("wow" in msg):
-                reply = "🙂😊"
+                reply = "wow"
                 sendMsg()
             elif ("bye" in msg):
-                reply = "bye👋"
+                reply = "bye {username}"
                 sendMsg()
             elif ("good morning" in msg):
-                reply = "Good Morning🌅🌺"
+                reply = "goodmorning {username}"
                 sendMsg()
             elif ("goodnight" in msg):
-                reply = "good night🌃🌙"
+                reply = "goodnight {username}"
                 sendMsg()
             elif ("good night" in msg or msg == "gn"):
-                reply = "good night🌃🌙"
+                reply = "goodnight {username}"
                 sendMsg()
             elif ("hello" in msg):
-                reply = "Hi"
+                reply = "hello {username} iloveyou mwa"
                 sendMsg()
-            elif ("hello" in msg or "hlo" in msg):
-                reply = "Hi"
+            elif ("hello" in msg or "hlo" in msg or "helloo" in msg):
+                reply = "hi {username}, inamo teh"
                 sendMsg()
             elif (msg == "hi"):
-                reply = "Hello! How can I help you?"
+                reply = "hi {username}, inamo be"
                 sendMsg()
 
         except Exception as e:
@@ -564,7 +564,7 @@ class ChatBot(Client):
                 if("//video.xx.fbcdn" in unsent_msg):
 
                     if(thread_type == ThreadType.USER):
-                        reply = f"You just unsent a video"
+                        reply = f"inamo {username} akala mo di ko nakita vid mo ha"
                         self.send(Message(text=reply), thread_id=thread_id,
                                   thread_type=thread_type)
                         self.sendRemoteFiles(
@@ -573,7 +573,7 @@ class ChatBot(Client):
                         user = self.fetchUserInfo(f"{author_id}")[
                             f"{author_id}"]
                         username = user.name.split()[0]
-                        reply = f"{username} just unsent a video"
+                        reply = f"ulol fast hand si kayser boi, {username} just unsent a video"
                         self.send(Message(text=reply), thread_id=thread_id,
                                   thread_type=thread_type)
                         self.sendRemoteFiles(
@@ -597,27 +597,37 @@ class ChatBot(Client):
                             file_urls=unsent_msg, message=None, thread_id=thread_id, thread_type=ThreadType.GROUP)
                 else:
                     if(thread_type == ThreadType.USER):
-                        reply = f"ulol {username} fast hand si kayser boi, removed message :\n{unsent_msg} "
+                        reply = f"ulol {username} fast hand si kayser boi, removed message : {unsent_msg} "
                         self.send(Message(text=reply), thread_id=thread_id,
                                   thread_type=thread_type)
                     elif(thread_type == ThreadType.GROUP):
                         user = self.fetchUserInfo(f"{author_id}")[
                             f"{author_id}"]
                         username = user.name.split()[0]
-                        reply = f"{username} just unsent a message:\n{unsent_msg}"
+                        reply = f"ulol fasthand si kayser boi\n{username} just unsent a message : {unsent_msg}"
                         self.send(Message(text=reply), thread_id=thread_id,
                                   thread_type=thread_type)
 
             except:
                 pass
 
+    def onUserAdded(self, mid=None. author_id=None, new_color=None, thread_id=None, thread_type=ThreadType.USER, **kwargs):
+    	reply = "welcome {username}, sana magenjoy ka dito mwaps"
+        self.send(Message(text=reply), thread_id=thread_id,
+                  thread_type=thread_type)
+      
+    def onUserRemoved(self, mid=None, author_id=None, new_color=None, thread_id=None, thread_type=ThreadType.USER, **kwargs):
+        reply = "ayan tar*ntado ka kasi, remove ka tuloy haha"
+        self.send(Message(text=reply), thread_id=thread_id,
+                  thread_type=thread_type)
+
     def onColorChange(self, mid=None, author_id=None, new_color=None, thread_id=None, thread_type=ThreadType.USER, **kwargs):
-        reply = "You changed the theme ✌️😎"
+        reply = "pangjejemon lang theme, alisin mo na yan"
         self.send(Message(text=reply), thread_id=thread_id,
                   thread_type=thread_type)
 
     def onEmojiChange(self, mid=None, author_id=None, new_color=None, thread_id=None, thread_type=ThreadType.USER, **kwargs):
-        reply = "You changed the emoji 😎. Great!"
+        reply = "bakit mo pinalitan emoji, angpangit"
         self.send(Message(text=reply), thread_id=thread_id,
                   thread_type=thread_type)
 
@@ -637,12 +647,12 @@ class ChatBot(Client):
                   thread_type=thread_type)
 
     def onCallStarted(self, mid=None, caller_id=None, is_video_call=None, thread_id=None, thread_type=None, ts=None, metadata=None, msg=None, ** kwargs):
-        reply = "You just started a call 📞🎥"
+        reply = "You just started a call "
         self.send(Message(text=reply), thread_id=thread_id,
                   thread_type=thread_type)
 
     def onCallEnded(self, mid=None, caller_id=None, is_video_call=None, thread_id=None, thread_type=None, ts=None, metadata=None, msg=None, ** kwargs):
-        reply = "Bye 👋🙋‍♂️"
+        reply = "natapos din mag call, inanyo"
         self.send(Message(text=reply), thread_id=thread_id,
                   thread_type=thread_type)
 
