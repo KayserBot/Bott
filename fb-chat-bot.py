@@ -491,7 +491,7 @@ class ChatBot(Client):
                 reply = "Yes, if you are nice and kind girl. But if you are boy RIP."
                 sendMsg()
             elif ("taga saan ka?" in msg):
-                reply = "sa poso mo, [padlock susi] {username} [susi padlock]"
+                reply = "sa poso mo"
                 sendMsg()
             elif ("you sure" in msg):
                 reply = "yes. i'm sure."
@@ -518,25 +518,25 @@ class ChatBot(Client):
                 reply = "wow"
                 sendMsg()
             elif ("bye" in msg):
-                reply = "bye {username}"
+                reply = "bye"
                 sendMsg()
             elif ("good morning" in msg):
-                reply = "goodmorning {username}"
+                reply = "goodmorning"
                 sendMsg()
             elif ("goodnight" in msg):
-                reply = "goodnight {username}"
+                reply = "goodnight"
                 sendMsg()
             elif ("good night" in msg or msg == "gn"):
-                reply = "goodnight {username}"
+                reply = "goodnight"
                 sendMsg()
             elif ("hello" in msg):
-                reply = "hello {username} iloveyou mwa"
+                reply = "hello, iloveyou mwa"
                 sendMsg()
             elif ("hello" in msg or "hlo" in msg or "helloo" in msg):
-                reply = "hi {username}, inamo teh"
+                reply = "hi, inamo teh"
                 sendMsg()
             elif (msg == "hi"):
-                reply = "hi {username}, inamo be"
+                reply = "hi, inamo be"
                 sendMsg()
 
         except Exception as e:
