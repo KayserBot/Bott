@@ -611,11 +611,6 @@ class ChatBot(Client):
             except:
                 pass
 
-    def onUserAdded(self, mid=None. author_id=None, new_color=None, thread_id=None, thread_type=ThreadType.USER, **kwargs):
-    	reply = "welcome {username}, sana magenjoy ka dito mwaps"
-        self.send(Message(text=reply), thread_id=thread_id,
-                  thread_type=thread_type)
-      
     def onUserRemoved(self, mid=None, author_id=None, new_color=None, thread_id=None, thread_type=ThreadType.USER, **kwargs):
         reply = "ayan tar*ntado ka kasi, remove ka tuloy haha"
         self.send(Message(text=reply), thread_id=thread_id,
